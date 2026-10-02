@@ -119,6 +119,7 @@ function renderPlan() {
   document.querySelector("#plan-impacts").textContent = impactsLabel();
   document.querySelector("#plan-card").hidden = false;
   document.querySelector("#plan-card").scrollIntoView({ behavior: "smooth", block: "start" });
+  document.querySelector("#plan-card").focus({ preventScroll: true });
 }
 
 document.querySelector("#show-plan").addEventListener("click", renderPlan);

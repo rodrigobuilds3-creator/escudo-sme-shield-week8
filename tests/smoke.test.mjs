@@ -68,6 +68,7 @@ test('uncertain area remains explicitly uncertain and restart restores focus', (
   choices[0].trigger('click');
   one['#show-plan'].trigger('click');
   assert.equal(one['#plan-card'].hidden, false);
+  assert.equal(one['#plan-card'].focused, true);
   assert.equal(one['#plan-impacts'].textContent, 'Área afectada: aún no identificada');
   assert.match(one['#action-list'].innerHTML, /canal oficial/);
   one['#start-over'].trigger('click');
