@@ -51,15 +51,16 @@ function setup() {
     },
     createElement() { return makeElement({ click() {} }); },
   };
-  runInNewContext(source, {
+  const context = {
     document,
     window: { print() {} },
     Blob,
     URL,
     setTimeout,
     fetch: async () => ({ ok: false }),
-  });
-  return { one, choices, impacts };
+  };
+  runInNewContext(source + '\nglobalThis.__makeSummary = makeSummary;', context);
+  return { one, choices, impacts, makeSummary: context.__makeSummary };
 }
 
 test('uncertain area remains explicitly uncertain and restart restores focus', () => {
@@ -78,13 +79,18 @@ test('uncertain area remains explicitly uncertain and restart restores focus', (
 });
 
 test('changing incident updates guidance without collecting free text', () => {
-  const { one, choices, impacts } = setup();
+  const { one, choices, impacts, makeSummary } = setup();
   choices[2].trigger('click');
   impacts[2].checked = true;
   one['#show-plan'].trigger('click');
   assert.match(one['#plan-title'].textContent, /exposición/);
   assert.match(one['#plan-impacts'].textContent, /Datos de clientes/);
   assert.match(one['#route-links'].innerHTML, /gob\.mx\/gncertmx/);
+  const summary = makeSummary();
+  assert.match(summary, /Señal seleccionada: Datos posiblemente expuestos/);
+  assert.match(summary, /ORIENTACIÓN/);
+  assert.match(summary, /Involucra a la persona responsable\./);
+  assert.match(summary, /gob\.mx\/gncertmx/);
   const html = readFileSync(new URL('../site/index.html', import.meta.url), 'utf8');
   assert.doesNotMatch(html, /<input[^>]+type=["'](?:text|email|password|file)["']/i);
   assert.doesNotMatch(source, /\b(?:localStorage|sessionStorage)\s*\(/);

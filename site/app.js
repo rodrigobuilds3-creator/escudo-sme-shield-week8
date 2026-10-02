@@ -56,6 +56,14 @@ const incidentData = {
   }
 };
 
+const incidentLabels = Object.freeze({
+  money: "Movimiento de dinero",
+  account: "Acceso a una cuenta",
+  data: "Datos posiblemente expuestos",
+  system: "Operación interrumpida",
+  unsure: "No estoy seguro"
+});
+
 let selectedIncident = "";
 const selectedImpacts = () => [...document.querySelectorAll(".impact-options input:checked")].map((input) => input.value);
 const escapeText = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -147,11 +155,11 @@ function makeSummary() {
   if (!plan) return "";
   const impacts = selectedImpacts();
   const date = new Date().toLocaleString("es-MX", { dateStyle: "medium", timeStyle: "short" });
-  const steps = plan.actions.map(([title]) => `- ${title}`).join("\n");
+  const steps = plan.actions.map(([title, detail]) => `- ${title}. ${detail}`).join("\n");
   const evidence = plan.evidence.map((item) => `- ${item}`).join("\n");
   const routes = plan.routes.map(([name, detail, href]) => `- ${name}: ${detail}${href === "#" ? "" : ` — ${href}`}`).join("\n");
   const selected = impacts.length ? impacts.join(", ") : "Aún no identificada";
-  return `ESCUDO SME SHIELD — RESUMEN DE DEMOSTRACIÓN\nFecha local: ${date}\nSeñal seleccionada: ${plan.title}\nÁreas marcadas: ${selected}\n\nRUTA INICIAL\n${steps}\n\nÍNDICE PARA PREPARAR (no adjuntar evidencia)\n${evidence}\n\nRUTAS QUE PUEDEN APLICAR\n${routes}\n\nLÍMITES\nOrientación educativa; no confirma intrusión ni sustituye atención profesional. No se enviaron datos desde la demo.\n`;
+  return `ESCUDO SME SHIELD — RESUMEN DE DEMOSTRACIÓN\nFecha local: ${date}\nSeñal seleccionada: ${incidentLabels[selectedIncident]}\nÁreas marcadas: ${selected}\n\nORIENTACIÓN\n${plan.intro}\n\nRUTA INICIAL\n${steps}\n\nÍNDICE PARA PREPARAR (no adjuntar evidencia)\n${evidence}\n\nRUTAS QUE PUEDEN APLICAR\n${routes}\n\nLÍMITES\nOrientación educativa; no confirma intrusión ni sustituye atención profesional. No se enviaron datos desde la demo.\n`;
 }
 
 document.querySelector("#download-summary").addEventListener("click", () => {
