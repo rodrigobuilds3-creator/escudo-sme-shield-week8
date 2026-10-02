@@ -1,9 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import { readFileSync } from 'node:fs';
 const require = createRequire(import.meta.url);
 const guide = require('../api/guide.js');
 const kev = require('../api/kev.js');
+
+test('deployment restricts scripts and browser permissions', () => {
+  const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const headers = Object.fromEntries(config.headers[0].headers.map(({ key, value }) => [key, value]));
+  assert.match(headers['Content-Security-Policy'], /script-src 'self'/);
+  assert.match(headers['Content-Security-Policy'], /connect-src 'self'/);
+  assert.match(headers['Permissions-Policy'], /camera=\(\)/);
+  assert.equal(config.outputDirectory, 'site');
+});
 
 function response() {
   return {
