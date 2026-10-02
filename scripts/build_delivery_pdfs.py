@@ -100,9 +100,9 @@ packet = [Spacer(1,.1*inch), para('PACKET / RODRIGO PENA / WEEK 8','SmallEsc'),
           para('Seguridad y shadow clause','H2Esc'),
           para('Sin claves en codigo, datos reales, texto libre, uploads ni almacenamiento. El usuario conserva el control del indice; la aplicacion no envia evidencia. Los canales externos se muestran con alcance y se verifican por separado. Se escala a humano si hay perdida en curso, datos sensibles, sistemas criticos o incertidumbre.'),
           para('Plan de prueba','H2Esc'),
-          para('Recorrer los cinco escenarios, exportacion y teclado; comprobar que no hay envio de hechos del incidente; registrar defecto, correccion y segundo despliegue. En conversacion nueva, mostrar capturas reales a una persona sintetica y registrar confusiones. Cinco tests locales y la correccion de foco estan en docs/TEST_LOG.md; navegador, llamadas vivas, capturas y redeploy siguen pendientes.'),
+          para('Recorrer los cinco escenarios, exportacion y teclado; comprobar que no hay envio de hechos del incidente; registrar defecto, correccion y segundo despliegue. En conversacion nueva, mostrar capturas reales a una persona sintetica y registrar confusiones. Siete tests locales y la correccion de foco estan en docs/TEST_LOG.md; navegador, llamadas vivas, capturas y redeploy siguen pendientes.'),
           para('Estado de la entrega','H2Esc'),
-          para('Brightspace exige URL publica, enlace GitHub, 5 commits, 2 despliegues, video de 3:00 + 0:30, PDFs Packet/Persona/BuildChat y Dragon Stack. El packet, prototipo local, funciones de servidor y cinco pruebas existen; los demas elementos se registran en docs/DELIVERY_STATUS.md. El blueprint compartido aun carece de la declaracion Technologist final.'),
+          para('Brightspace exige URL publica, enlace GitHub, 5 commits, 2 despliegues, video de 3:00 + 0:30, PDFs Packet/Persona/BuildChat y Dragon Stack. El packet, prototipo local, funciones de servidor, seis commits locales y siete pruebas existen; los demas elementos se registran en docs/DELIVERY_STATUS.md. El blueprint compartido aun carece de la declaracion Technologist final.'),
           para('Fuente canonica: docs/PACKET.md. Fuentes de benchmark y canales: docs/BUSINESS_CASE.md.', 'SmallEsc')]
 pdf(OUT/'PACKET_Rodrigo_Pena_WEEK8.pdf',packet,'Escudo - Packet Week 8')
 
