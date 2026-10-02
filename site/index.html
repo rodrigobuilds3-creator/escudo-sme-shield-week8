@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f2">
+  <title>Escudo | SME Shield demo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Escudo, inicio">
+      <span class="brand-mark" aria-hidden="true">E</span>
+      <span><strong>escudo</strong><small>SME Shield</small></span>
+    </a>
+    <div class="demo-label"><span class="pulse" aria-hidden="true"></span> DEMO ACADÉMICA</div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="eyebrow">CONTINUIDAD DIGITAL PARA EQUIPOS PEQUEÑOS</div>
+      <h1>Un siguiente paso claro<br><span>cuando algo cambia.</span></h1>
+      <p>Revisa qué falta para cuidar la operación o encuentra una ruta inicial si algo ya pasó. Tú decides qué hacer; aquí no se conecta ninguna cuenta.</p>
+    </section>
+
+    <div class="safety-note" role="note">
+      <span class="shield-icon" aria-hidden="true">✓</span>
+      <div><strong>Tu información se queda en esta pantalla.</strong><span>No pedimos identidad, archivos, contraseñas ni datos bancarios. La demo no envía reportes.</span></div>
+    </div>
+
+    <div class="mode-tabs" role="tablist" aria-label="Elegir modo">
+      <button class="mode-tab active" id="tab-prepare" role="tab" type="button" aria-selected="true" aria-controls="prepare-panel" tabindex="0">Preparar mi negocio</button>
+      <button class="mode-tab" id="tab-incident" role="tab" type="button" aria-selected="false" aria-controls="incident-panel" tabindex="-1">Tengo un incidente</button>
+    </div>
+
+    <section class="mode-panel" id="prepare-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-prepare">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">ANTES DE QUE HAGA FALTA</div>
+          <h2>Empieza por lo que ya usas</h2>
+          <p>Un servicio completo revisaría estos puntos contigo. En esta demo aparecen como pendientes: no hemos verificado nada.</p>
+        </div>
+        <span class="status-pill"><span class="status-dot"></span> 4 por revisar</span>
+      </div>
+
+      <div class="checklist" id="readiness-list">
+        <article class="readiness-card">
+          <span class="step-no">01</span><div><h3>Correo y accesos</h3><p>¿Quién administra las cuentas de trabajo y cómo se recupera el acceso?</p></div><span class="todo-tag">Por revisar</span>
+        </article>
+        <article class="readiness-card">
+          <span class="step-no">02</span><div><h3>Copias de respaldo</h3><p>¿Hay una copia reciente y alguien ha comprobado que se puede restaurar?</p></div><span class="todo-tag">Por revisar</span>
+        </article>
+        <article class="readiness-card">
+          <span class="step-no">03</span><div><h3>Accesos de recuperación</h3><p>¿Hay una ruta conocida para contactar al proveedor sin depender de un enlace inesperado?</p></div><span class="todo-tag">Por revisar</span>
+        </article>
+        <article class="readiness-card">
+          <span class="step-no">04</span><div><h3>Quién ayuda</h3><p>¿Está claro quién toma la decisión si pagos, correo o sistemas dejan de funcionar?</p></div><span class="todo-tag">Por revisar</span>
+        </article>
+      </div>
+
+      <div class="callout soft-callout">
+        <span class="callout-icon" aria-hidden="true">i</span>
+        <p><strong>No es una evaluación de seguridad.</strong> Este prototipo no accede a tus sistemas ni confirma que estén protegidos. Una persona responsable tendría que revisar cada punto contigo.</p>
+      </div>
+
+      <div class="tools-grid">
+        <section class="tool-card" aria-labelledby="ai-heading">
+          <div class="eyebrow">LLM · TAREA RUTINARIA</div>
+          <h3 id="ai-heading">Explica un punto de preparación</h3>
+          <p>La IA solo explica preguntas generales. No recibe información de tu empresa ni decide qué hacer ante un incidente.</p>
+          <label for="ai-topic">Tema</label>
+          <select id="ai-topic">
+            <option value="backup">Comprobar un respaldo</option>
+            <option value="contacts">Preparar contactos de ayuda</option>
+            <option value="access">Revisar quién administra accesos</option>
+          </select>
+          <button class="secondary-button" id="ask-ai" type="button">Pedir explicación</button>
+          <p class="tool-output" id="ai-output" role="status">La función necesita una API configurada. Si está inactiva, los cuatro puntos de arriba siguen disponibles.</p>
+        </section>
+        <section class="tool-card" aria-labelledby="kev-heading">
+          <div class="eyebrow">FUENTE PÚBLICA DE SEGURIDAD</div>
+          <h3 id="kev-heading">Contexto de vulnerabilidades</h3>
+          <p>Consulta entradas recientes del catálogo CISA KEV por proveedor. No revisa tus sistemas ni indica que estés afectado.</p>
+          <label for="kev-vendor">Proveedor</label>
+          <select id="kev-vendor">
+            <option value="Microsoft">Microsoft</option>
+            <option value="Google">Google</option>
+            <option value="Cisco">Cisco</option>
+          </select>
+          <button class="secondary-button" id="check-kev" type="button">Consultar fuente</button>
+          <div class="tool-output" id="kev-output" role="status">Fuente: <a href="https://github.com/cisagov/kev-data" target="_blank" rel="noopener noreferrer">CISA KEV</a>. Consulta opcional; si falta la API, no muestra datos inventados.</div>
+        </section>
+      </div>
+    </section>
+
+    <section class="mode-panel" id="incident-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-incident" hidden>
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">RUTA DE RESPUESTA</div>
+          <h2>¿Qué estás notando?</h2>
+          <p>Elige la señal más cercana. Si no estás seguro, puedes dejarlo como incierto.</p>
+        </div>
+        <span class="step-counter" id="step-counter">PASO 1 DE 2</span>
+      </div>
+
+      <fieldset class="choice-grid" id="incident-choices">
+        <legend class="sr-only">Tipo de incidente observado</legend>
+        <button class="choice-card" type="button" data-incident="money" aria-pressed="false"><span class="choice-icon">$</span><span><strong>Movimiento de dinero</strong><small>Veo una operación que no reconozco</small></span><span class="radio-mark"></span></button>
+        <button class="choice-card" type="button" data-incident="account" aria-pressed="false"><span class="choice-icon">@</span><span><strong>Acceso a una cuenta</strong><small>No puedo entrar o alguien más parece tener acceso</small></span><span class="radio-mark"></span></button>
+        <button class="choice-card" type="button" data-incident="data" aria-pressed="false"><span class="choice-icon">▤</span><span><strong>Datos posiblemente expuestos</strong><small>Un archivo o información llegó a donde no debía</small></span><span class="radio-mark"></span></button>
+        <button class="choice-card" type="button" data-incident="system" aria-pressed="false"><span class="choice-icon">▦</span><span><strong>Operación interrumpida</strong><small>Un sistema está bloqueado o no disponible</small></span><span class="radio-mark"></span></button>
+        <button class="choice-card wide-choice" type="button" data-incident="unsure" aria-pressed="false"><span class="choice-icon">?</span><span><strong>No estoy seguro</strong><small>Algo parece raro, pero no sé qué significa</small></span><span class="radio-mark"></span></button>
+      </fieldset>
+
+      <div class="impact-step" id="impact-step" hidden>
+        <fieldset>
+          <legend tabindex="-1">¿Qué parte de la operación puede estar afectada?</legend>
+          <p class="field-help">Puedes elegir varias opciones o continuar sin marcar ninguna si todavía no sabes qué área está afectada. No escribas nombres, números ni detalles de cuentas.</p>
+          <div class="impact-options">
+            <label class="check-option"><input type="checkbox" value="Pagos o banca"><span>Pagos o banca</span></label>
+            <label class="check-option"><input type="checkbox" value="Correo o identidad"><span>Correo o identidad</span></label>
+            <label class="check-option"><input type="checkbox" value="Datos de clientes"><span>Datos de clientes</span></label>
+            <label class="check-option"><input type="checkbox" value="Operación diaria"><span>Operación diaria</span></label>
+          </div>
+        </fieldset>
+        <button class="primary-button" id="show-plan" type="button">Ver ruta inicial <span aria-hidden="true">→</span></button>
+      </div>
+
+      <section class="plan-card" id="plan-card" aria-live="polite" hidden>
+        <div class="plan-topline"><span class="status-pill caution-pill"><span class="status-dot"></span> Orientación inicial</span><button class="text-button" id="start-over" type="button">Empezar de nuevo</button></div>
+        <h3 id="plan-title">Tu siguiente paso</h3>
+        <p class="plan-intro" id="plan-intro"></p>
+        <ol class="action-list" id="action-list"></ol>
+        <div class="evidence-box">
+          <div class="evidence-head"><div><div class="eyebrow">ÍNDICE PARA PREPARAR</div><h4>Qué conviene anotar</h4></div><span class="local-tag">LOCAL</span></div>
+          <ul id="evidence-list"></ul>
+          <p class="evidence-warning">Guarda evidencia en tus sistemas habituales. No la adjuntes ni la pegues aquí.</p>
+        </div>
+        <div class="routes-box">
+          <div class="eyebrow">RUTAS QUE PUEDEN APLICAR</div>
+          <div id="route-links" class="route-links"></div>
+        </div>
+        <div class="human-note"><span aria-hidden="true">↗</span><p><strong>Escala a una persona</strong> si hay pérdida en curso, datos sensibles, sistemas críticos o no puedes confirmar la ruta. La demo no decide por ti.</p></div>
+        <div class="plan-footer">
+          <span id="plan-impacts">Sin área marcada</span>
+          <div><button class="secondary-button" id="download-summary" type="button">Descargar resumen</button><button class="secondary-button" id="print-summary" type="button">Imprimir</button></div>
+        </div>
+        <p class="disclaimer">Esto es una simulación educativa, no una investigación ni asesoría profesional. No confirma intrusión, exposición, responsabilidad o solución. Verifica siempre los canales oficiales vigentes.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="footer-inner"><span>ESCUDO · SME SHIELD</span><span>Prototipo académico · sin cuentas conectadas · sin envío de datos</span></div>
+  </footer>
+</body>
+</html>

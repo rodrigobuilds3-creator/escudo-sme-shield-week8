@@ -1,0 +1,10 @@
+{
+  "name": "escudo-sme-shield-week8",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check site/app.js && node --check api/guide.js && node --check api/kev.js"
+  },
+  "engines": { "node": ">=20" }
+}
