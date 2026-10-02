@@ -12,6 +12,7 @@ module.exports = async function handler(req, res) {
   let body;
   try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; }
   catch { return res.status(400).json({ error: 'invalid_json' }); }
+  if (JSON.stringify(body ?? null).length > 256) return res.status(413).json({ error: 'too_large' });
   if (!body || typeof body !== 'object' || Array.isArray(body) ||
       Object.keys(body).length !== 1 || !Object.hasOwn(body, 'topic') ||
       typeof body.topic !== 'string' || !Object.hasOwn(TOPICS, body.topic)) {
@@ -34,7 +35,9 @@ module.exports = async function handler(req, res) {
     if (!response.ok) return res.status(502).json({ error: 'llm_unavailable' });
     const data = await response.json();
     const text = data?.candidates?.[0]?.content?.parts?.map((part) => part.text || '').join(' ').trim();
-    if (!text || text.length > 900) return res.status(502).json({ error: 'llm_invalid_output' });
+    if (!text || text.length > 900 || /https?:\/\/|www\.|\b\S+@\S+\.\S+\b/i.test(text)) {
+      return res.status(502).json({ error: 'llm_invalid_output' });
+    }
     return res.status(200).json({ source: 'gemini-live', topic: body.topic, explanation: text });
   } catch {
     return res.status(502).json({ error: 'llm_unavailable' });

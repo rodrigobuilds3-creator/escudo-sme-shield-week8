@@ -64,6 +64,26 @@ test('LLM endpoint sends only approved prompt to upstream and labels live output
   }
 });
 
+test('LLM endpoint rejects oversized payloads and invented contact links', async () => {
+  const oldKey = process.env.GEMINI_API_KEY;
+  const oldFetch = global.fetch;
+  process.env.GEMINI_API_KEY = 'test-only';
+  global.fetch = async () => ({ ok: true, json: async () => ({ candidates: [{ content: { parts: [{ text: 'Entra a https://ejemplo.invalid/ayuda' }] } }] }) });
+  try {
+    const oversized = response();
+    await guide({ method: 'POST', headers: {}, body: { topic: 'backup', padding: 'x'.repeat(300) } }, oversized);
+    assert.equal(oversized.statusCode, 413);
+    const invented = response();
+    await guide({ method: 'POST', headers: {}, body: { topic: 'backup' } }, invented);
+    assert.equal(invented.statusCode, 502);
+    assert.equal(invented.payload.error, 'llm_invalid_output');
+  } finally {
+    global.fetch = oldFetch;
+    if (oldKey === undefined) delete process.env.GEMINI_API_KEY;
+    else process.env.GEMINI_API_KEY = oldKey;
+  }
+});
+
 test('security feed keeps a fixed source and filters allowed vendor', async () => {
   const oldFetch = global.fetch;
   let url;
