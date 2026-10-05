@@ -21,7 +21,7 @@ Este directorio es el proyecto de Escudo. `reference/` queda fuera del repositor
 2. Crear una clave Gemini para la cuenta del propietario y configurarla **directamente en Vercel** como `GEMINI_API_KEY` para el entorno del demo. No ponerla en GitHub, archivos, capturas o chat. El modelo `gemini-2.5-flash-lite` tiene nivel gratuito según [precios oficiales](https://ai.google.dev/gemini-api/docs/pricing), sujeto a cuotas y términos del proveedor.
 3. Primer despliegue: comprobar inicio, selección de incidente, exportación, respuesta de `/api/kev?vendor=Microsoft` y el botón de IA. Confirmar que la salida muestra fuente/advertencia y que no se envían hechos del incidente.
 4. Tras probar la primera URL, registrar cualquier defecto nuevo observado en vivo, corregirlo, pasar pruebas y hacer segundo despliegue. Los defectos de foco y exportación anteriores al primer despliegue están documentados como correcciones locales; no presentarlos como el ciclo de redeploy de la rúbrica. Registrar URL de cada versión y el hash de Git.
-5. Abrir el sitio público con teclado y en móvil, tomar capturas de cada pantalla para el test de persona en chat nuevo y grabar `DEMO_Rodrigo_Pena.mp4`.
+5. Se inspeccionó el flujo y el defecto CISA en el navegador público, se corrigió el enlace a la fuente y se comprobó la corrección en el segundo despliegue. Se generó `output/video/DEMO_Rodrigo_Pena.mp4` como montaje de capturas reales con voz sintética. No es una grabación continua; la prueba independiente de persona en chat nuevo sigue pendiente.
 
 ## Observaciones de seguridad
 
