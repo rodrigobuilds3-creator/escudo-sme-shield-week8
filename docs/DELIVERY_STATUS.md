@@ -7,9 +7,9 @@ Fuente consultada el 1 de octubre de 2026: [Business Bending Week 8 en Brightspa
 | Packet con usuario, éxito, mockup generado, Mermaid, benchmark, visión, alcance, arquitectura y test plan | `docs/PACKET.md`, `assets/mockup-incidente-generado.png` | Contenido presente; revisión posterior al primer código, así que no prueba cronología packet-antes-de-código |
 | Prompt de implementación con criterios y plan de commits | `docs/BUILD_PROMPT.md` | Presente |
 | Dragon Stack: LLM + herramienta/API de seguridad + tercer componente | `api/guide.js`, `api/kev.js`, exportación local y ocho pruebas automatizadas | CISA KEV y sitio comprobados en vivo; **LLM aún sin clave ni prueba en vivo** |
-| Cinco commits, dos despliegues | Más de cinco commits publicados; primer despliegue Vercel registrado en `docs/DEPLOY.md` | Historial y primer despliegue cumplidos; **segundo despliegue pendiente** |
+| Cinco commits, dos despliegues | Más de cinco commits publicados; dos despliegues Vercel registrados en `docs/DEPLOY.md` | **Cumplido** |
 | Seguridad básica | Sin secretos, cuenta, base de datos, texto libre ni personas reales en el sitio; entradas de lista cerrada | Revisado localmente; inspección de despliegue pendiente |
-| Prueba mecánica, bug, corrección y nuevo despliegue | `tests/smoke.test.mjs`, `tests/api.test.mjs`, `docs/TEST_LOG.md` | Defecto del enlace CISA detectado en vivo, corrección y ocho pruebas locales; nuevo despliegue pendiente |
+| Prueba mecánica, bug, corrección y nuevo despliegue | `tests/smoke.test.mjs`, `tests/api.test.mjs`, `docs/TEST_LOG.md` | Defecto del enlace CISA detectado en vivo, corrección, ocho pruebas locales y segundo despliegue verificado |
 | Persona en conversación nueva con capturas ordenadas | `docs/PERSONA_SIMULADA_PRELIMINAR.md` | Ensayo narrativo simulado, **no** test de la rúbrica con conversación y capturas reales |
 | Video 3:00 + 0:30 reflexión | `docs/DEMO_SCRIPT.md` | Guion preparado; grabación pendiente |
 | PDF packet, persona y BuildChat | Se generan desde scripts del proyecto | Diferenciar material simulado de una exportación real |

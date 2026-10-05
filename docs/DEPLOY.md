@@ -2,12 +2,14 @@
 
 ## Estado
 
-Repositorio público y primer despliegue verificados el 4 de octubre de 2026. La clave Gemini sigue sin configurarse. El segundo despliegue para corregir el enlace CISA está pendiente de verificación; registrar aquí su URL y commit cuando existan.
+Repositorio público y dos despliegues verificados el 4 de octubre de 2026. La clave Gemini sigue sin configurarse.
 
 | Despliegue | Commit | URL / evidencia | Estado |
 |---|---|---|---|
 | 1 | `028cb11bbae3411e7af323095e4aa14301474775` | [Versión Vercel](https://escudo-sme-shield-week8-lsgcfjvk2-rodrigo-builds3.vercel.app/), ID `dpl_9mr8AQuW4rZwRqy25aZ9iXtDfEDg` | Publicado; sitio, flujo de incidente y CISA KEV comprobados en navegador |
-| 2 | Por registrar | Por registrar | Corrección de enlace a fuente CISA preparada; despliegue pendiente |
+| 2 | `ae39a99f8bd8a2f66b5d812f87f474f4ba5596ea` | [Versión Vercel](https://escudo-sme-shield-week8-rgk05rbn8-rodrigo-builds3.vercel.app/) | Ready en Vercel; enlace «Ver catálogo CISA KEV» visible en la URL principal tras consultar Microsoft |
+
+Las capturas de antes y después se guardan solo en el workspace local, bajo `output/evidence/`; no forman parte del repositorio público.
 
 ## Repositorio
 
