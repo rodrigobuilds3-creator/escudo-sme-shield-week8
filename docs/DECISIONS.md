@@ -13,8 +13,8 @@
 | Evidencia del caso | Dromómanos aporta testimonio de fraude financiero y fricción de recuperación | No acredita breach/ransomware ni demanda |
 | Mercado | INEGI CE 2024 como contexto, no como TAM | 5,468,180 establecimientos; participaciones redondeadas |
 | Estado del equipo | Blueprint de trabajo, no versión final idéntica aprobada | Archivo adjunto señala Technologist declaration pendiente |
-| Requisito Dragon Stack | No declarar integración viva antes de despliegue | Código LLM y CISA KEV preparado y probado con dobles; clave y prueba pública pendientes |
-| Pruebas | Mantener prueba mecánica y ensayo sintético separados | Dos tests locales aprobados; el ensayo de persona no cumple capturas/chat nuevo |
+| Requisito Dragon Stack | No declarar integración viva antes de despliegue | CISA KEV consultada en la demo pública; LLM sin clave y sin prueba en vivo |
+| Pruebas | Mantener prueba mecánica y ensayo sintético separados | Ocho casos locales aprobados; persona ficticia con capturas del sitio, sin prueba independiente en chat nuevo |
 | Publicación | Preparar artefactos antes de enlazar GitHub y URL pública | Repo público y sitio en Vercel conectados; dos despliegues verificados; Gemini pendiente de clave del propietario; entrega en Brightspace pendiente |
 
 ## Cambio de postura
