@@ -13,7 +13,7 @@
 | Evidencia del caso | Dromómanos aporta testimonio de fraude financiero y fricción de recuperación | No acredita breach/ransomware ni demanda |
 | Mercado | INEGI CE 2024 como contexto, no como TAM | 5,468,180 establecimientos; participaciones redondeadas |
 | Estado del equipo | Blueprint de trabajo, no versión final idéntica aprobada | Archivo adjunto señala Technologist declaration pendiente |
-| Requisito Dragon Stack | No declarar integración viva antes de despliegue | CISA KEV consultada en la demo pública; LLM sin clave y sin prueba en vivo |
+| Requisito Dragon Stack | No declarar integración viva antes de despliegue | CISA KEV consultada en la demo pública; LLM sin prueba en vivo. Vercel marca `GEMINI_API_KEY` como Config/Needs Attention; pendiente sustituirla por una clave nueva de tipo Secret y volver a desplegar |
 | Pruebas | Mantener prueba mecánica y ensayo sintético separados | Ocho casos locales aprobados; persona ficticia con capturas del sitio, sin prueba independiente en chat nuevo |
 | Publicación | Preparar artefactos antes de enlazar GitHub y URL pública | Repo público y sitio en Vercel conectados; dos despliegues verificados; Gemini pendiente de clave del propietario; entrega en Brightspace pendiente |
 
@@ -27,4 +27,4 @@ Se leyó la consigna completa de Business Bending en Brightspace y se completó 
 
 ## Actualización - 4 oct 2026
 
-El repositorio se publicó en GitHub y se conectó con el proyecto de Vercel con autorización expresa del usuario. Se verificaron dos despliegues públicos y el defecto del enlace a la fuente CISA quedó corregido y comprobado en el segundo. Se ejecutaron ocho pruebas locales para el último cambio de código. Se generó `output/video/DEMO_Rodrigo_Pena.mp4` (3:30, montaje de capturas de la URL pública y narración sintética) y un PDF de persona con capturas reales, que identifica el diálogo como simulación. La clave Gemini sigue sin estar configurada: el usuario debe iniciar sesión y agregarla directamente en Vercel. No se ha enviado nada al dropbox de Brightspace y no se ha realizado una prueba independiente de persona.
+El repositorio se publicó en GitHub y se conectó con el proyecto de Vercel con autorización expresa del usuario. Se verificaron dos despliegues públicos y el defecto del enlace a la fuente CISA quedó corregido y comprobado en el segundo. Se ejecutaron ocho pruebas locales para el último cambio de código. Se generó `output/video/DEMO_Rodrigo_Pena.mp4` (3:30, montaje de capturas de la URL pública y narración sintética) y un PDF de persona con capturas reales, que identifica el diálogo como simulación. Vercel muestra `GEMINI_API_KEY` como Config/Needs Attention; no se verificó una respuesta LLM en vivo. El propietario debe reemplazarla por una clave nueva de tipo Secret y volver a desplegar. No se ha enviado nada al dropbox de Brightspace y no se ha realizado una prueba independiente de persona.

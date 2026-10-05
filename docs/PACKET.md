@@ -102,7 +102,7 @@ flowchart LR
   S4 --> U4
 ```
 
-**Estado del diagrama:** los nodos de IA y fuente pública están implementados para el modo Preparar, pero solo fueron probados localmente con respuestas simuladas de API. La IA no participa en la ruta de incidente. Ninguna decisión ni contacto ocurre sin la persona usuaria.
+**Estado del diagrama:** los nodos de IA y fuente pública están implementados para el modo Preparar. CISA KEV se consultó en vivo; la IA solo se probó con respuesta simulada. Vercel marca `GEMINI_API_KEY` como Config/Needs Attention, así que no se ha verificado una respuesta LLM en producción. La IA no participa en la ruta de incidente. Ninguna decisión ni contacto ocurre sin la persona usuaria.
 
 ## Arquitectura y pila
 
@@ -110,12 +110,12 @@ flowchart LR
 |---|---|---|---|
 | HTML/CSS/JavaScript estático | Dos modos, navegación y accesibilidad | Implementado localmente | No autentica ni conserva casos |
 | Reglas de seguridad locales | Rutas conservadoras por señal | Implementado; no son diagnóstico | Sin detección de malware, fraude o exposición |
-| LLM | Explicar tres tareas rutinarias predefinidas de preparación | Función `api/guide.js` y UI implementadas; prueba con respuesta simulada, sin clave ni despliegue | La salida no decide incidentes y se etiqueta como generada por IA |
-| Fuente/API de seguridad | Mostrar tres entradas recientes de CISA KEV para un proveedor elegido | Función `api/kev.js` y UI implementadas; prueba con feed simulado, sin consulta pública real verificada | Contexto de vulnerabilidades, no escaneo ni prueba de compromiso |
+| LLM | Explicar tres tareas rutinarias predefinidas de preparación | Función `api/guide.js` y UI implementadas; respuesta simulada en pruebas; configuración Vercel marcada Needs Attention, sin respuesta en vivo verificada | La salida no decide incidentes y se etiqueta como generada por IA |
+| Fuente/API de seguridad | Mostrar tres entradas recientes de CISA KEV para un proveedor elegido | Función `api/kev.js` y UI implementadas; consulta pública verificada en la URL de Vercel | Contexto de vulnerabilidades, no escaneo ni prueba de compromiso |
 | Automatización local | Construir resumen de selecciones y descargarlo | Implementado | No envía reportes ni evidencia |
 | Almacenamiento | Ninguno | Implementado como ausencia deliberada | Cerrar la pestaña descarta estado |
 
-El código reúne los tres componentes previstos: LLM de preparación, fuente de seguridad y exportación automatizada. **Todavía no se ha verificado el Dragon Stack en vivo:** falta `GEMINI_API_KEY` en variables de entorno y desplegar las funciones. La clave no se guarda en repositorio; el LLM recibe solo una etiqueta de tema convertida en prompt fijo por el servidor, sin información de la empresa. El catálogo [CISA KEV](https://github.com/cisagov/kev-data) es público y no inspecciona el entorno de la pyme. La función usa el modelo [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/pricing) previsto para nivel gratuito, sujeto a la disponibilidad y condiciones vigentes del proveedor.
+El código reúne los tres componentes previstos: LLM de preparación, fuente de seguridad y exportación automatizada. **Todavía no se ha verificado el Dragon Stack en vivo:** Vercel marca `GEMINI_API_KEY` como Config/Needs Attention; se necesita una clave nueva de tipo Secret para Production y un nuevo despliegue. La clave no se guarda en repositorio; el LLM recibe solo una etiqueta de tema convertida en prompt fijo por el servidor, sin información de la empresa. El catálogo [CISA KEV](https://github.com/cisagov/kev-data) es público y no inspecciona el entorno de la pyme. La función usa el modelo [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/pricing) previsto para nivel gratuito, sujeto a la disponibilidad y condiciones vigentes del proveedor.
 
 ## Plan de pruebas y evidencia esperada
 
