@@ -2,7 +2,12 @@
 
 ## Estado
 
-Código listo para revisión local. No hay despliegue ni clave configurada verificados al escribir esto. Registrar aquí el commit, URL, hora y prueba de cada despliegue cuando existan; no completar retroactivamente sin evidencia.
+Repositorio público y primer despliegue verificados el 4 de octubre de 2026. La clave Gemini sigue sin configurarse. El segundo despliegue para corregir el enlace CISA está pendiente de verificación; registrar aquí su URL y commit cuando existan.
+
+| Despliegue | Commit | URL / evidencia | Estado |
+|---|---|---|---|
+| 1 | `028cb11bbae3411e7af323095e4aa14301474775` | [Versión Vercel](https://escudo-sme-shield-week8-lsgcfjvk2-rodrigo-builds3.vercel.app/), ID `dpl_9mr8AQuW4rZwRqy25aZ9iXtDfEDg` | Publicado; sitio, flujo de incidente y CISA KEV comprobados en navegador |
+| 2 | Por registrar | Por registrar | Corrección de enlace a fuente CISA preparada; despliegue pendiente |
 
 ## Repositorio
 
@@ -10,7 +15,7 @@ Este directorio es el proyecto de Escudo. `reference/` queda fuera del repositor
 
 ## Vercel
 
-1. Importar el repositorio público como proyecto Vercel con framework «Other». `vercel.json` establece `site` como directorio de salida y reconoce las funciones en `api/`.
+1. Repositorio importado al proyecto `rodrigo-builds3/escudo-sme-shield-week8` con framework «Other». `vercel.json` establece `site` como directorio de salida y reconoce las funciones en `api/`.
 2. Crear una clave Gemini para la cuenta del propietario y configurarla **directamente en Vercel** como `GEMINI_API_KEY` para el entorno del demo. No ponerla en GitHub, archivos, capturas o chat. El modelo `gemini-2.5-flash-lite` tiene nivel gratuito según [precios oficiales](https://ai.google.dev/gemini-api/docs/pricing), sujeto a cuotas y términos del proveedor.
 3. Primer despliegue: comprobar inicio, selección de incidente, exportación, respuesta de `/api/kev?vendor=Microsoft` y el botón de IA. Confirmar que la salida muestra fuente/advertencia y que no se envían hechos del incidente.
 4. Tras probar la primera URL, registrar cualquier defecto nuevo observado en vivo, corregirlo, pasar pruebas y hacer segundo despliegue. Los defectos de foco y exportación anteriores al primer despliegue están documentados como correcciones locales; no presentarlos como el ciclo de redeploy de la rúbrica. Registrar URL de cada versión y el hash de Git.

@@ -22,8 +22,8 @@ Las copias PDF para la entrega y el blueprint compartido por el equipo se conser
 
 ## Abrir la demo
 
-Abre `site/index.html` en un navegador para revisar el flujo local. Sin un despliegue con funciones de servidor, los botones de IA y catálogo público informan que el servicio no está disponible. La demo no conecta cuentas, no recopila datos de incidentes y no contacta instituciones.
+Abre la [demo pública](https://escudo-sme-shield-week8.vercel.app/) o `site/index.html` para revisar el flujo local. La URL pública consulta CISA KEV; la explicación con IA requiere que el propietario configure `GEMINI_API_KEY` en Vercel. La demo no conecta cuentas, no recopila datos de incidentes y no contacta instituciones.
 
 ## Estado
 
-Documento de trabajo y prototipo académico. No demuestra demanda, disposición a pagar, eficacia de controles, alianzas, desempeño de respuesta ni resultados de seguridad. Los números comerciales y la operación real están pendientes de evidencia y del trabajo de Money, Operator y Technologist. El prototipo pasó `node --check` y siete pruebas locales con dobles de DOM/API; los PDF se renderizaron y revisaron. La interacción visual del sitio no se ha comprobado en un navegador: el entorno bloqueó la apertura de archivos locales y el servidor local. Falta probar las funciones LLM/API en vivo, URL pública, dos despliegues, test de persona con capturas reales y video; ver `docs/DELIVERY_STATUS.md`.
+Documento de trabajo y prototipo académico. No demuestra demanda, disposición a pagar, eficacia de controles, alianzas, desempeño de respuesta ni resultados de seguridad. Los números comerciales y la operación real están pendientes de evidencia y del trabajo de Money, Operator y Technologist. El prototipo pasó `node --check` y ocho pruebas locales con dobles de DOM/API; los PDF se renderizaron y revisaron. El primer despliegue y el flujo de incidente y CISA KEV se comprobaron en navegador. Faltan la función LLM con clave, el segundo despliegue, el test de persona con capturas reales y el video; ver `docs/DELIVERY_STATUS.md`.

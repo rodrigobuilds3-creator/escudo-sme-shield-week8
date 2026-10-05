@@ -218,7 +218,12 @@ document.querySelector("#check-kev").addEventListener("click", async () => {
       item.textContent = `${entry.cveID} · ${entry.product} · añadido ${entry.dateAdded}`;
       list.appendChild(item);
     });
-    output.replaceChildren(intro, list);
+    const sourceLink = document.createElement("a");
+    sourceLink.href = "https://github.com/cisagov/kev-data";
+    sourceLink.textContent = "Ver catálogo CISA KEV ↗";
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noopener noreferrer";
+    output.replaceChildren(intro, list, sourceLink);
   } catch {
     output.textContent = "La fuente pública no está disponible ahora. No se muestran datos simulados ni se ha revisado tu sistema.";
   } finally {

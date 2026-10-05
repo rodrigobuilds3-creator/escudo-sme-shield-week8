@@ -10,7 +10,7 @@ function makeElement(extra = {}) {
   const attrs = new Map();
   return {
     hidden: false, checked: false, value: '', textContent: '', innerHTML: '', tabIndex: 0,
-    focused: false,
+    focused: false, children: [],
     dataset: {},
     classList: { toggle() {} },
     addEventListener(name, fn) { listeners.set(name, fn); },
@@ -18,14 +18,14 @@ function makeElement(extra = {}) {
     getAttribute(name) { return attrs.get(name); },
     focus() { this.focused = true; },
     scrollIntoView() {},
-    appendChild() {},
-    replaceChildren() {},
-    trigger(name, event = {}) { listeners.get(name)?.(event); },
+    appendChild(...nodes) { this.children.push(...nodes); },
+    replaceChildren(...nodes) { this.children = nodes; },
+    trigger(name, event = {}) { return listeners.get(name)?.(event); },
     ...extra,
   };
 }
 
-function setup() {
+function setup(fetchImpl = async () => ({ ok: false })) {
   const selectors = [
     '#tab-prepare', '#tab-incident', '#prepare-panel', '#incident-panel',
     '#step-counter', '#impact-step', '#impact-step legend', '#plan-card',
@@ -57,7 +57,7 @@ function setup() {
     Blob,
     URL,
     setTimeout,
-    fetch: async () => ({ ok: false }),
+    fetch: fetchImpl,
   };
   runInNewContext(source + '\nglobalThis.__makeSummary = makeSummary;', context);
   return { one, choices, impacts, makeSummary: context.__makeSummary };
@@ -76,6 +76,22 @@ test('uncertain area remains explicitly uncertain and restart restores focus', (
   assert.equal(one['#plan-card'].hidden, true);
   assert.equal(choices[0].focused, true);
   assert.equal(one['#step-counter'].textContent, 'PASO 1 DE 2');
+});
+
+test('CISA results retain a direct source link after the live response', async () => {
+  const { one } = setup(async () => ({
+    ok: true,
+    json: async () => ({
+      source: 'CISA KEV', vendor: 'Microsoft', catalogVersion: '2026.10.04',
+      entries: [{ cveID: 'CVE-2026-0001', product: 'Windows', dateAdded: '2026-10-01' }],
+    }),
+  }));
+  await one['#check-kev'].trigger('click');
+  const children = one['#kev-output'].children;
+  assert.equal(children.length, 3);
+  assert.equal(children[2].href, 'https://github.com/cisagov/kev-data');
+  assert.equal(children[2].textContent, 'Ver catálogo CISA KEV ↗');
+  assert.equal(children[2].rel, 'noopener noreferrer');
 });
 
 test('changing incident updates guidance without collecting free text', () => {

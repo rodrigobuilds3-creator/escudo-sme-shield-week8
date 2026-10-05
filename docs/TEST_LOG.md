@@ -15,9 +15,13 @@ Al pulsar «Empezar de nuevo», el panel con ese botón se ocultaba pero el foco
 
 Una simulación preliminar de persona sugirió que «Puedes elegir varias opciones» hacía parecer obligatoria la selección de un área. La ayuda ahora dice que se puede continuar sin marcar ninguna si aún no se sabe; el resultado muestra «Área afectada: aún no identificada» en lugar de interpretarlo como omisión. Véase `PERSONA_SIMULADA_PRELIMINAR.md`.
 
-## Faltante de la rúbrica
+## 4 oct 2026, primer despliegue y defecto observado en vivo
 
-No se ha hecho un primer ni segundo despliegue de Escudo, así que esto **no** cumple todavía el ciclo test-corrección-redeploy exigido. Tampoco hay prueba de navegador sobre una URL pública. La página y la exportación deben revisarse visualmente cuando exista un entorno permitido y la URL viva.
+- Primer despliegue de Vercel: `dpl_9mr8AQuW4rZwRqy25aZ9iXtDfEDg`, commit `028cb11bbae3411e7af323095e4aa14301474775`, [URL de versión](https://escudo-sme-shield-week8-lsgcfjvk2-rodrigo-builds3.vercel.app/).
+- En la [URL principal](https://escudo-sme-shield-week8.vercel.app/) se abrió el modo incidente, se eligió «Movimiento de dinero» y se continuó sin marcar un área. El resultado conservó «Área afectada: aún no identificada» y mostró la ruta financiera y el índice de evidencia.
+- La consulta real a `/api/kev?vendor=Microsoft` devolvió tres entradas y la versión `2026.10.04` del catálogo CISA. El botón de IA mostró la indisponibilidad honesta porque todavía no hay `GEMINI_API_KEY` configurada; no se simuló una respuesta.
+- **Defecto de la primera versión:** al mostrar resultados KEV, `site/app.js` reemplazaba el contenido inicial de `#kev-output` y eliminaba el enlace visible a la fuente CISA. La persona ya no podía abrir el catálogo desde ese panel para verificar la información.
+- **Corrección preparada:** el resultado ahora incluye un enlace fijo a `https://github.com/cisagov/kev-data`, con `rel="noopener noreferrer"`. Se añadió prueba de regresión al DOM simulado. `npm test`: **8/8**; `npm run check`: correcto. Falta verificar el segundo despliegue y el enlace en la URL viva.
 
 ## Integración LLM y feed: pasada local adicional
 
