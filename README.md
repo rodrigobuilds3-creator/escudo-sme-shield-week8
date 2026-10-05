@@ -17,11 +17,8 @@ Caso de negocio en validación y demo estática del navegador de incidentes para
 - [`assets/mockup-incidente-generado.png`](assets/mockup-incidente-generado.png): mockup generado por IA para el packet.
 - [`site/index.html`](site/index.html): demo local del flujo de continuidad e incidentes.
 - [`api/guide.js`](api/guide.js) y [`api/kev.js`](api/kev.js): funciones opcionales de LLM rutinario y contexto CISA KEV para despliegue en Vercel. Requieren configurar `GEMINI_API_KEY` en variables de entorno para activar el LLM; nunca pegarla en archivos ni mensajes.
-- [`output/pdf/BUSINESS_CASE_Rodrigo_Pena_WEEK8_USER.pdf`](../../../../output/pdf/BUSINESS_CASE_Rodrigo_Pena_WEEK8_USER.pdf): copia de lectura de tres páginas del caso de negocio.
-- [`output/pdf/PACKET_Rodrigo_Pena_WEEK8.pdf`](../../../../output/pdf/PACKET_Rodrigo_Pena_WEEK8.pdf): copia de lectura del packet.
-- [`output/pdf/PERSONA_Rodrigo_Pena_WEEK8_SIMULADA.pdf`](../../../../output/pdf/PERSONA_Rodrigo_Pena_WEEK8_SIMULADA.pdf): ensayo sintético preliminar en PDF.
-- [`output/pdf/BUILDCHAT_Rodrigo_Pena_WEEK8_SIMULADO.pdf`](../../../../output/pdf/BUILDCHAT_Rodrigo_Pena_WEEK8_SIMULADO.pdf): conversación simulada en PDF.
-- [`reference/BLUEPRINT_Week8_Team_DRAFT.pdf`](reference/BLUEPRINT_Week8_Team_DRAFT.pdf): copia idéntica del PDF compartido, identificada como borrador por su propia nota de Technologist pendiente.
+
+Las copias PDF para la entrega y el blueprint compartido por el equipo se conservan **solo en el workspace local**; no forman parte de este repositorio público. Las versiones Markdown del caso, packet, persona simulada y BuildChat simulado sí están enlazadas arriba.
 
 ## Abrir la demo
 
